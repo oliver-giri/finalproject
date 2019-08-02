@@ -6,8 +6,8 @@ class Rectangle():
         self.color = color
         self.x = x
         self.y = y
-        self.width
-        self.height
+        self.width = width
+        self.height = height
 
     def getRect(self):
         return pygame.Rect(self.x, self.y, self.width, self.height)
