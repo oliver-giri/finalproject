@@ -46,6 +46,8 @@ while True:
     for bomb in bombs:
         pygame.draw.rect(screen, bomb.color, bomb.getRect(), 0)
         bomb.move()
+        if player.y + player.height > bomb.y and player.y < bomb.y + bomb.height and player.x + player.width > bomb.x and player.x < bomb.x + bomb.width:
+            sys.exit()
         if bomb.x + bomb.width < 0:
             bombs.remove(bomb)
     pygame.draw.rect(screen, shooter.color, shooter.getRect(), 0)
@@ -53,3 +55,9 @@ while True:
     player.move()
     pygame.display.flip()
     screen.fill((78, 104, 191))
+    if player.x > 800:
+        largeText = pygame.font.Font('freesansbold.ttf', 115)
+        textSurface = largeText.render("You Win!", True, (0, 0, 0))
+        textRect = textSurface.get_rect()
+        textRect.center = (400, 90)
+        screen.blit(textSurface, textRect)
